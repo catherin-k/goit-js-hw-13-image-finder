@@ -3,7 +3,7 @@ import ImgApi from "./js/apiService.js";
 import template from "./templates/item.hbs";
 import refs from "./js/refs.js";
 
-const { form, searchBtn, gallery, loadMOreBtn } = refs;
+const { form, gallery, loadMOreBtn } = refs;
 const imgApi = new ImgApi();
 console.log(imgApi);
 
@@ -13,16 +13,24 @@ loadMOreBtn.addEventListener("click", onMoreSearch);
 function onSearch(e) {
   e.preventDefault();
   gallery.innerHTML = "";
-  console.log(e.target.query.value);
+  // console.log(e.target.query.value);
   imgApi.searchQuery = e.target.query.value;
+
+  if (imgApi.searchQuery === "") {
+    return;
+  }
+  imgApi.resetPage();
+  fetchCards();
+  loadMOreBtn.classList.remove("is-hidden");
+}
+
+function fetchCards() {
   return imgApi.getFetch().then((imgs) => {
     buildGallery(imgs);
-
-    console.log(imgs);
   });
 }
 function onMoreSearch() {
-  //
+  fetchCards();
 }
 
 function buildGallery(img) {

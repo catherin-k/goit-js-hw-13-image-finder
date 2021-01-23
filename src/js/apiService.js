@@ -15,12 +15,14 @@ export default class ImgApi {
   }
 
   getFetch() {
-    const url = `${baseUrl}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${key}`;
+    console.log("Before:", this);
+    const url = `${baseUrl}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=3&key=${key}`;
 
     return fetch(url)
       .then((response) => response.json())
       .then(({ hits }) => {
         this.setPage();
+
         return hits;
       });
     // const response = await fetch(baseUrl + params);
