@@ -21,18 +21,34 @@ function onSearch(e) {
   }
   imgApi.resetPage();
   fetchCards();
-  loadMOreBtn.classList.remove("is-hidden");
 }
 
 function fetchCards() {
   return imgApi.getFetch().then((imgs) => {
     buildGallery(imgs);
+    if (gallery.children) {
+      loadMOreBtn.classList.remove("is-hidden");
+    } else {
+      loadMOreBtn.classList.add("is-hidden");
+    }
   });
 }
+
 function onMoreSearch() {
   fetchCards();
+  Scroll();
 }
 
 function buildGallery(img) {
   gallery.insertAdjacentHTML("beforeend", template(img));
+}
+
+function Scroll() {
+  setTimeout(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, 700);
 }

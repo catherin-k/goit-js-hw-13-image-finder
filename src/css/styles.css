@@ -1,7 +1,66 @@
-/* body {
-  background: black;
-  color: wheat;
-} */
+html {
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: 200px;
+}
+ul {
+  list-style: none;
+}
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.input {
+  padding: 10px 15px;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  margin: 15px;
+  width: calc((100% - 120px) / 4);
+}
+.photo-card img {
+  object-fit: contain;
+}
+.btn {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+
+  height: 50px;
+  min-width: 150px;
+}
 .is-hidden {
   display: none;
+}
+.stats {
+  display: flex;
+  justify-content: center;
+}
+.stats-item {
+  text-align: center;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.material-icons {
+  display: flex;
+  justify-content: center;
 }

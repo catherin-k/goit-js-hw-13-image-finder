@@ -16,7 +16,7 @@ export default class ImgApi {
 
   getFetch() {
     console.log("Before:", this);
-    const url = `${baseUrl}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=3&key=${key}`;
+    const url = `${baseUrl}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${key}`;
 
     return fetch(url)
       .then((response) => response.json())
@@ -25,10 +25,6 @@ export default class ImgApi {
 
         return hits;
       });
-    // const response = await fetch(baseUrl + params);
-    // const result = await response.json();
-    // this.setPage();
-    // return result.hits;
   }
   setPage() {
     this.page += 1;
