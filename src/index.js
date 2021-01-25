@@ -26,7 +26,8 @@ function onSearch(e) {
 function fetchCards() {
   return imgApi.getFetch().then((imgs) => {
     buildGallery(imgs);
-    if (gallery.children) {
+    if (gallery.children && imgs.length >= 12) {
+      Scroll();
       loadMOreBtn.classList.remove("is-hidden");
     } else {
       loadMOreBtn.classList.add("is-hidden");
@@ -44,11 +45,9 @@ function buildGallery(img) {
 }
 
 function Scroll() {
-  setTimeout(() => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      left: 0,
-      behavior: "smooth",
-    });
-  }, 700);
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    left: 0,
+    behavior: "smooth",
+  });
 }
