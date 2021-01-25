@@ -26,10 +26,11 @@ function onSearch(e) {
 function fetchCards() {
   return imgApi.getFetch().then((imgs) => {
     buildGallery(imgs);
-    if (gallery.children && imgs.length >= 12) {
+    if (gallery.children) {
       Scroll();
       loadMOreBtn.classList.remove("is-hidden");
-    } else {
+    }
+    if (imgs.length < 12) {
       loadMOreBtn.classList.add("is-hidden");
     }
   });
@@ -37,7 +38,6 @@ function fetchCards() {
 
 function onMoreSearch() {
   fetchCards();
-  Scroll();
 }
 
 function buildGallery(img) {
